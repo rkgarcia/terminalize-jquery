@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminalize Effect - jQuery plugin demo</title>
+</head>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="terminalize.min.js"></script>
+<body>
+<div id="inmediate">
+    <a class="cmd">./document.ready</a>
+    <a class="cmd-response">Show when the web loads</a>
+    <a class="cmd">./Command2</a>
+    <a class="cmd-response">Response 2</a>
+    <a class="cmd">./Command3</a>
+    <a class="cmd-response">Response 3</a>
+</div>
+<div class="terminal">
+    <a class="cmd">./term1 cmd1</a>
+    <a class="cmd-response">Terminal 1 Command 1 Response</a>
+    <a class="cmd">./term1 cmd2</a>
+    <a class="cmd-response">Terminal 1 Command 2 Response</a>
+</div>
+<div class="terminal">
+    <a class="cmd">./term2 cmd1</a>
+    <a class="cmd-response">Terminal 2 Command 1 Response</a>
+    <a class="cmd">./term2 cmd2</a>
+    <a class="cmd-response">Terminal 2 Command 2 Response</a>
+</div>
+<script type="text/javascript" language="javascript">
+    $('document').ready(function(){
+        $('#inmediate').terminalize();
+        $('.terminal').terminalize_init({prompt:"rkgarcia@local:~$"});
+    });
+    function reset(){
+        $('.terminal').terminalize_init({prompt:"rkgarcia@local:~$"});
+    }
+    function init(){
+        $('.terminal').terminalize({prompt:"rkgarcia@local:~$",mode:"all",velocity:50});
+    }
+</script>
+<a href="#" onclick="javascript:init();">Effect...!!! All at same time</a>
+<a href="#" onclick="javascript:reset();">Restart terminal...</a>
+</body>
+</html>
