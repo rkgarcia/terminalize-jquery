@@ -4,7 +4,7 @@
     <title>Terminalize Effect - jQuery plugin demo</title>
 </head>
 <script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="terminalize.min.js"></script>
+<script type="text/javascript" src="terminalize.js"></script>
 <body>
 <div id="inmediate">
     <a class="cmd">./document.ready</a>
@@ -29,13 +29,13 @@
 <script type="text/javascript" language="javascript">
     $('document').ready(function(){
         $('#inmediate').terminalize();
-        $('.terminal').terminalize_init({prompt:"rkgarcia@local:~$"});
+        $('.terminal').terminalize({prompt: "rkgarcia@local:~$", activated:false});
     });
     function reset(){
-        $('.terminal').terminalize_init({prompt:"rkgarcia@local:~$"});
+        $('.terminal').terminalize({prompt:"rkgarcia@reset:~$",activated:false});
     }
     function init(){
-        $('.terminal').terminalize({prompt:"rkgarcia@local:~$",mode:"all",velocity:50});
+        $('.terminal').terminalize({prompt:"rkgarcia@init:~$",mode:"all",velocity:50});
     }
 </script>
 <a href="#" onclick="javascript:init();">Effect...!!! All at same time</a>

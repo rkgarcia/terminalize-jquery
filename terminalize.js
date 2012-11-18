@@ -17,7 +17,7 @@
         });
         return this;
     };
-    
+    /*
     $.fn.terminalize_init = function( options ){
         var defaults = {
             prompt:'terminal>', // Text for prompt if not defined
@@ -29,13 +29,12 @@
         allResponses = $( loc_selector + " .cmd-response");
         allCommands.css("visibility","hidden");
         allResponses.css({"visibility":"hidden","display":"block"});
-        $(loc_selector).children('.prompt').remove();
-        $(loc_selector).prepend('<a class="prompt">'+options.prompt+'</a>');
-    }
+    }*/
     
     $.fn.terminalize = function( options ) {
         var defaults = {
-            velocity: 120,
+            velocity: 120,      // Velocity of effect between chars
+            activated: true,    // Indicated if activate inmediatly the effect
             mode: 'single',     // You can use all for show the effect in all terminals at same time
             prompt:'terminal>', // Text for prompt if not defined
             };
@@ -49,16 +48,16 @@
         allResponses.css({"visibility":"hidden","display":"block"});
         $(loc_selector).children('.prompt').remove();
         $( loc_selector ).prepend('<a class="prompt">'+options.prompt+'</a>');
-        if( terminals.length === 1){
-            cmds( 0 , $(terminals[0]) );
-        }else if( terminals.length > 1 ){
-            if( options.mode === "single"){
-                walkTerm( 0 , $(terminals) );
-            }else if( options.mode === "all" ){
-                var ar = Array();
-                terminals.each(function(index){
-                    ar[index] = new cmds( 0 , $(terminals[ index ]) ),0;
-                });
+        if( options.activated ){
+            if( terminals.length > 1 ){
+                if( options.mode === "single"){
+                    walkTerm( 0 , $(terminals) );
+                }else if( options.mode === "all" ){
+                    var ar = Array();
+                    terminals.each(function(index){
+                        ar[index] = new cmds( 0 , $(terminals[ index ]) );
+                    });
+                }
             }
         }
         
